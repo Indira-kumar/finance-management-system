@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import DailyAmountCollection from '../models/daily_amount_collection';
 
 // Add new daily collection entry
-export const addDailyCollection = async (req, res) => {
+export const createDailyCollection = async (req, res) => {
   try {
     const dailyCollection = new DailyAmountCollection(req.body);
     await dailyCollection.save();
