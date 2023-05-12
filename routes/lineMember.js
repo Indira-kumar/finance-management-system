@@ -4,10 +4,10 @@ const lineMemberRouter = Router();
 
 lineMemberRouter.post("/");
 lineMemberRouter.get("/");
-lineMemberRouter.get("/:id");
+lineMemberRouter.get("/:email");
 lineMemberRouter.put("/", );
-lineMemberRouter.delete("/:id");
-lineMemberRouter.patch("/:id");
+lineMemberRouter.delete("/:email");
+lineMemberRouter.patch("/:email");
 
 
 export default lineMemberRouter;
