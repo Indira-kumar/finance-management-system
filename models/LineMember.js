@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const LineMemberDetailsSchema = new mongoose.Schema({
+const LineMemberSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
   member_name: { type: String, required: true },
   address: { type: String, required: true },
@@ -11,6 +11,6 @@ const LineMemberDetailsSchema = new mongoose.Schema({
   delete_flag: { type: Boolean, required: true, default: false },
 });
 
-const LineMemberDetails = mongoose.model('LineMemberDetails', LineMemberDetailsSchema);
+const LineMember = mongoose.model('LineMember', LineMemberSchema);
 
-export default LineMemberDetails
+export default LineMember

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const LoanAmountDetailsSchema = new mongoose.Schema({
+const LoanAmountSchema = new mongoose.Schema({
   loan_no: { type: String, required: true, unique: true },
   user_no: { type: String, required: true },
   name: { type: String, required: true },
@@ -18,6 +18,6 @@ const LoanAmountDetailsSchema = new mongoose.Schema({
   line_name: { type: String, required: true}
 });
 
-const LoanAmountDetails = mongoose.model('LoanAmountDetails', LoanAmountDetailsSchema);
+const LoanAmount = mongoose.model('LoanAmount', LoanAmountSchema);
 
-export default LoanAmountDetails
+export default LoanAmount

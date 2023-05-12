@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const LineDetailsSchema = new mongoose.Schema({
+const LineSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
   line_name: { type: String, required: true },
   created_on: { type: Date, required: true, default: Date.now },
@@ -8,6 +8,6 @@ const LineDetailsSchema = new mongoose.Schema({
   delete_flag: { type: Boolean, required: true, default: false },
 });
 
-const LineDetails = mongoose.model('LineDetails', LineDetailsSchema);
+const Line = mongoose.model('Line', LineSchema);
 
-export default LineDetails
+export default Line;
