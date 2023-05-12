@@ -1,5 +1,5 @@
 import { Router } from "express";
-
+import {createLine, getAllLine, getLineById, updateLine, updateLineById, deleteLineById} from "../controllers/lineController.js";
 const lineRouter = Router();
 lineRouter.post("/", createLine);
 lineRouter.get("/", getAllLine);
