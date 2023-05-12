@@ -4,10 +4,10 @@ const totalCollectionRouter = Router();
 
 totalCollectionRouter.post("/");
 totalCollectionRouter.get("/");
-totalCollectionRouter.get("/:id");
+totalCollectionRouter.get("/:date");
 totalCollectionRouter.put("/", );
-totalCollectionRouter.delete("/:id");
-totalCollectionRouter.patch("/:id");
+totalCollectionRouter.delete("/:date");
+totalCollectionRouter.patch("/:date");
 
 
 export default totalCollectionRouter;
