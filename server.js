@@ -21,7 +21,7 @@ app.use(cors());
 app.use(cookieParser());
 
 // ROUTES
-app.use("/", route);
+app.use("api/v1/", route);
 
 // DATABASE SETUP AND SERVER LISTENING
 const port = process.env.PORT || 6001;
