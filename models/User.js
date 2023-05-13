@@ -16,6 +16,11 @@ const User = mongoose.model(
       type: String,
       required: true,
     },
+    phoneNumber:{
+      type: Number,
+      required: true,
+      unique: true,
+    },
     role: {
       type: String,
       default: "Admin",
