@@ -1,13 +1,12 @@
 import { Router } from "express";
-import {createLineMember, getAllLineMember, getLineMemberByEmail, updateLineMember, updateLineMemberByEmail,deleteLineMemberByEmail} from "../controllers/lineMemberController.js"
+import {createLineMember, getAllLineMember, getLineMemberByPhoneNum, updateLineMemberByPhoneNum,deleteLineMemberByEmail} from "../controllers/lineMemberController.js"
 const lineMemberRouter = Router();
 
 lineMemberRouter.post("/", createLineMember);
 lineMemberRouter.get("/", getAllLineMember);
-lineMemberRouter.get("/:email", getLineMemberByEmail);
-lineMemberRouter.put("/", updateLineMember);
-lineMemberRouter.delete("/:email", deleteLineMemberByEmail);
-lineMemberRouter.patch("/:email", updateLineMemberByEmail);
+lineMemberRouter.get("/phone", getLineMemberByPhoneNum);
+lineMemberRouter.put("/", updateLineMemberByPhoneNum);
+lineMemberRouter.delete("/", deleteLineMemberByEmail);
 
 
 export default lineMemberRouter;

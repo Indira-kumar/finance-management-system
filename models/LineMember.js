@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const LineMemberSchema = new mongoose.Schema({
-  id: { type: String, required: true, unique: true },
+  line_boy_no: { type: String, required: true, unique: true },
   member_name: { type: String, required: true },
   address: { type: String, required: true },
   phone_no: { type: Number, required: true },

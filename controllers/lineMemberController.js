@@ -23,10 +23,10 @@ export const getAllLineMember = async (req, res) => {
 }
 
 // GET /line/member/:email
-export const getLineMemberByEmail = async (req, res) => {
+export const getLineMemberByPhoneNum = async (req, res) => {
   try {
     const lineMember = await LineMember.findOne({
-      email: req.params.email,
+      phone_no: req.body.phone_number,
     });
     if (lineMember) {
       res.json(lineMember);
@@ -40,10 +40,10 @@ export const getLineMemberByEmail = async (req, res) => {
 }
 
 // PUT /line/member
-export const updateLineMember = async (req, res) => {
+export const updateLineMemberByPhoneNum = async (req, res) => {
   try {
     const lineMember = await LineMember.findOneAndUpdate(
-      { email: req.body.email },
+      { phone_no: req.body.phone_number },
       req.body,
       { new: true, upsert: true }
     );
