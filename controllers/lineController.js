@@ -1,6 +1,6 @@
 import Line from "../models/Line.js";
 // POST /line
-export const createLine = async (req, res) => => {
+export const createLine = async (req, res) => {
   try {
     const line = await Line.create(req.body);
     res.status(201).json(line);
@@ -40,8 +40,8 @@ export const getLineById = async (req, res) => {
 export const updateLine = async (req, res) => {
   try {
     const line = await Line.findOneAndUpdate(
-      { id: req.body.id },
-      req.body,
+      { line_no: req.body.line_no },
+      {line_name:""},
       { new: true, upsert: true }
     );
     res.json(line);
@@ -52,10 +52,10 @@ export const updateLine = async (req, res) => {
 }
 
 // DELETE /line/:id
-export const deleteLineById = async (req, res) => {
+export const deleteLine = async (req, res) => {
   try {
     const line = await Line.findOneAndDelete({
-      id: req.params.id,
+      line_name: req.body.line_name,
     });
     if (line) {
       res.json({ message: "Line  deleted" });
