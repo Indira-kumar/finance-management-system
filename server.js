@@ -6,7 +6,7 @@ import morgan from "morgan";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-import route from "./routes/index.js";
+import router from "./routes/index.js";
 
 // CONFIGURATIONS
 dotenv.config();
@@ -21,7 +21,7 @@ app.use(cors());
 app.use(cookieParser());
 
 // ROUTES
-app.use("api/v1/", route);
+app.use("/", router);
 
 // DATABASE SETUP AND SERVER LISTENING
 const port = process.env.PORT || 6001;

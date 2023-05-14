@@ -1,13 +1,14 @@
 import { Router } from "express";
-import {createDailyCollection, getAllDailyCollections, getDailyCollectionByLoanNumber, updateDailyCollectionByLoanNumber, deleteDailyCollectionByLoanNumber} from "../controllers/dailyAmountCollectionController.js"
-import { get } from "mongoose";
+import {createDailyCollection, getAllDailyCollections, getAllDailyCollectionsByconditions, updateDailyCollection, deleteDailyCollection} from "../controllers/dailyAmountCollectionController.js"
 const dailyCollectionRouter = Router();
 
 dailyCollectionRouter.post("/", createDailyCollection);
-dailyCollectionRouter.get("/", getAllDailyCollections);
-dailyCollectionRouter.get("/:loan_no", getDailyCollectionByLoanNumber);
-dailyCollectionRouter.delete("/:loan_no", deleteDailyCollectionByLoanNumber);
-dailyCollectionRouter.patch("/:loan_no", updateDailyCollectionByLoanNumber);
+dailyCollectionRouter.get("/", getAllDailyCollections); //wrt date
+dailyCollectionRouter.get("/condition", getAllDailyCollectionsByconditions); //wrt conditions in req.body
+// dailyCollectionRouter.get("/loan", getAllDailyCollectionsPerLoan);
+dailyCollectionRouter.put("/", updateDailyCollection);
+dailyCollectionRouter.delete("/", deleteDailyCollection);
+
 
 
 export default dailyCollectionRouter;
