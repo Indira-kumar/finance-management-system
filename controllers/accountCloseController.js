@@ -13,7 +13,9 @@ export const createAccountClose = async (req, res) => {
 // GET /accountclose
 export const getLastEntries = async (req, res) => {
   try {
-    const accountCloses = await AccountClose.find({}).sort({updated_at: -1}).limit(req.body.limit);
+    const accountCloses = await AccountClose.find({
+        line_name:req.body.line_name
+    }).sort({date: -1}).limit(req.body.limit);
     if (accountCloses) {
       res.status(200).json(accountCloses);
     } else {
@@ -29,12 +31,12 @@ export const getLastEntries = async (req, res) => {
 // PUT /AccountClose
 export const updateAccountClose = async (req, res) => {
   try {
-    const AccountClose = await AccountClose.findOneAndUpdate(
+    const accountClose = await AccountClose.findOneAndUpdate(
       { line_name:req.body.line_name, date:req.body.date},
       {date:req.body.new_date},
       { new: true, upsert: true }
     );
-    res.json(AccountClose);
+    res.json(accountClose);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -44,10 +46,11 @@ export const updateAccountClose = async (req, res) => {
 // DELETE /AccountClose/:id
 export const deleteAccountClose = async (req, res) => {
   try {
-    const AccountClose = await AccountClose.findOneAndDelete({
-      AccountClose_name: req.body.AccountClose_name,
+    const accountClose = await AccountClose.findOneAndDelete({
+      line_name: req.body.line_name,
+      date:req.body.date
     });
-    if (AccountClose) {
+    if (accountClose) {
       res.json({ message: "AccountClose  deleted" });
     } else {
       res.status(404).json({ message: "AccountClose  not found" });
