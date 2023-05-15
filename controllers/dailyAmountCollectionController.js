@@ -14,7 +14,7 @@ export const createDailyCollection = async (req, res) => {
 // Get all daily collection entries
 export const getAllDailyCollections = async (req, res) => {
   try {
-    const dailyCollections = await DailyAmountCollection.find({line_name:req.body.line_name, date:req.body.date});
+    const dailyCollections = await DailyAmountCollection.find({line_name:req.body.line_name, date:new Date(req.body.date)});
     res.status(200).json(dailyCollections);
   } catch (err) {
     res.status(400).json({ error: err.message });
