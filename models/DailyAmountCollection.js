@@ -7,6 +7,7 @@ const DailyAmountCollectionSchema = new mongoose.Schema({
   line_name: { type: String, required: true },
   updated_on: { type: Date, required: true, default: Date.now },
   loan_no: { type: String },
+  excess:{type:Number, default:0}
 });
 
 const DailyAmountCollection = mongoose.model('DailyAmountCollection', DailyAmountCollectionSchema);
