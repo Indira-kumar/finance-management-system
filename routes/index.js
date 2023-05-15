@@ -5,6 +5,7 @@ import lineRouter from "./line.js";
 import loanRouter from "./loan.js";
 import totalCollectionRouter from "./totalCollection.js";
 import acountCloseRouter from "./accountclose.js";
+import thittamRouter from "./thittam.js";
 const router = Router();
 
 router.use("/dailycollection", dailyCollectionRouter)
@@ -13,5 +14,6 @@ router.use("/linemember", lineMemberRouter)
 router.use("/loan", loanRouter )
 router.use("/totalcollection", totalCollectionRouter )
 router.use("/accountclose", acountCloseRouter)
+router.use("/thittam", thittamRouter)
 
 export default router;

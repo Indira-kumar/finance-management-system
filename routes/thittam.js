@@ -1,12 +1,13 @@
 import { Router } from "express";
-import headRouter from "./head";
+import headRouter from "./head.js";
 const thittamRouter = Router();
+
 thittamRouter.use('/head', headRouter);
-thittamRouter.post("/", createLine);
-thittamRouter.get("/", getAllLine);
-// thittamRouter.get("/:id", getLineById);
-// thittamRouter.put("/", updateLine);
-thittamRouter.delete("/", deleteLine);
+// thittamRouter.post("/");
+// thittamRouter.get("/");
+// // thittamRouter.get("/:id", getLineById);
+// // thittamRouter.put("/", updateLine);
+// thittamRouter.delete("/");
 // thittamRouter.patch("/:id", updateLineById);
 
 export default thittamRouter;
