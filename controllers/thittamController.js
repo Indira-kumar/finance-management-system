@@ -2,7 +2,7 @@ import Thittam from '../models/Thittam.js';
 import DailyAmountCollection from '../models/DailyAmountCollection.js';
 import Loan from "../models/Loan.js";
 import Line from "../models/Line.js";
-
+import Head from "../models/Head.js";
 // Fetch all Thittam documents
 export const getThittam = async (req, res) => {
   try {
@@ -56,6 +56,14 @@ export const createThittam = async (req, res) => {
       fields.push({ name: fieldName, credit:fieldValue, debit:0, description:''});
     });
     
+    //fecthing all head_name from Head
+    const head_names =  await Head.distinct('head_name'); 
+
+    //
+    head_names.forEach( async (headName) => {
+      fields.push({ name: headName, credit:0, debit:0, description:''});
+
+    })
     // Create the new Thittam document with dynamic fields
     const newThittam = new Thittam({date: req.body.date, fields });
 
