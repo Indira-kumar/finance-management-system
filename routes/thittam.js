@@ -1,13 +1,12 @@
 import { Router } from "express";
+import { createThittam } from "../controllers/thittamController.js";
 import headRouter from "./head.js";
 const thittamRouter = Router();
 
 thittamRouter.use('/head', headRouter);
-// thittamRouter.post("/");
-// thittamRouter.get("/");
-// // thittamRouter.get("/:id", getLineById);
-// // thittamRouter.put("/", updateLine);
-// thittamRouter.delete("/");
-// thittamRouter.patch("/:id", updateLineById);
+thittamRouter.post("/", createThittam);
+thittamRouter.get("/");
+thittamRouter.put("/",);
+thittamRouter.delete("/");
 
 export default thittamRouter;
