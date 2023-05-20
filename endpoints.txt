@@ -28,11 +28,12 @@ GET localhost:6001/dailycollection
 line_name
 date
 
-PUT localhost:6001/dailycollection
+PUT localhost:6001/dailycollection //note for FE dev, call update balance before, then get the updated loan
 line_name
 loan_no
 date
 pay_amount
+excess: updatedLoan.excess
 
 DELETE localhost:6001/dailycollection
 line_name
@@ -115,15 +116,21 @@ Write controller logic to change the getLoansByDate to date range
 write loan close logic in updateBalance
 Write logic for updating total collection table
 Write controller logic for getTotalCollectionsByDateRange
+Write acc close table endpoints
+write end point/logic to fetch the latest loan_number for this line
+write end point/logic to fetch the latest user_number for this line
+add excess in daily collection (logic in FE, written above)
+head table created
 
-Write 4 more tables ( 3 sent in mail + acc close table date, line_name)
+Write logic for updating the different fields in thittam
+write end points to fetch thittam fields with date range
 weekly history - array manipulation
 Particular element should be removed once data is entered in daily collection
-add excess in daily collection and update that in updatebalance
+
+
 
 
 
 Remaining:
-5) Thittam
 4) Reports (2 reports)
-6) User profile
+6) User profile (Authentication and Authorization)
