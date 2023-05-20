@@ -5,6 +5,7 @@ const LineMemberSchema = new mongoose.Schema({
   member_name: { type: String, required: true },
   address: { type: String, required: true },
   phone_no: { type: Number, required: true },
+  role:{type: String, required:true, default:"lineman"},
   password: { type: String, required: true },
   created_on: { type: Date, required: true, default: Date.now },
   updated_on: { type: Date, required: true, default: Date.now },
