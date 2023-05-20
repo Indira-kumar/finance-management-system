@@ -3,8 +3,6 @@ GET locahost:6001/line/
 
 1) Loan:
 POST locahost:6001/loan
-//write end point to fetch the latest loan_number for this line
-//write end point to fetch the latest user_number for this line
 all details mentioned in model as comments
 
 GET locahost:6001/loan/date
@@ -40,7 +38,12 @@ line_name
 loan_no
 
 3) Account Close
-POST 
+POST http://localhost:6001/accountclose
+line_name
+date
+GET http://localhost:6001/accountclose
+line_name
+limit
 
 4) Report
 To list all the loans in a line
@@ -132,5 +135,6 @@ Particular element should be removed once data is entered in daily collection
 
 
 Remaining:
-4) Reports (2 reports)
-6) User profile (Authentication and Authorization)
+1) Reports (2 reports)
+2) extra endpoints
+3) complete thittam
