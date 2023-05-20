@@ -1,4 +1,6 @@
 import LineMember from "../models/LineMember.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import { registerValidation, loginValidation } from "../utils/validation.js";
 
 // POST /line/member
@@ -11,9 +13,9 @@ import { registerValidation, loginValidation } from "../utils/validation.js";
 //     res.status(500).json({ message: "Server error" });
 //   }
 // }
-
+// send request as name not member_name
 export const createLineMember = async (req, res) => {
-  const { member_name, phone_no, password } = req.body;
+  const { name, phone_no, password } = req.body;
 
   //Validating data before user creation
   const error = registerValidation(req.body);
@@ -23,7 +25,7 @@ export const createLineMember = async (req, res) => {
 
   //checking whether the user already exists in the database
   try{
-    const phoneExist = await User.findOne({ phone_no: phone_no });
+    const phoneExist = await LineMember.findOne({ phone_no: phone_no });
   if (phoneExist) {
     return res.send("Phone Number already exists");
   }
@@ -37,9 +39,9 @@ export const createLineMember = async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   //creating a new user
-  const user = new User({
+  const user = new LineMember({
     line_boy_no: req.body.line_boy_no,
-    member_name: member_name,
+    member_name: name,
     phone_no: phone_no,
     password: hashedPassword,
     address: req.body.address,  
@@ -67,7 +69,7 @@ export const getAllLineMember = async (req, res) => {
 export const getLineMemberByPhoneNum = async (req, res) => {
   try {
     const lineMember = await LineMember.findOne({
-      phone_no: req.body.phone_number,
+      phone_no: req.body.phone_no,
     });
     if (lineMember) {
       res.json(lineMember);
@@ -142,7 +144,7 @@ export const lineMemberLogin = async (req, res) => {
     }
   
     //checking whether the user already exists in the database
-    const user = await User.findOne({  phone_no: phone_no });
+    const user = await LineMember.findOne({  phone_no: phone_no });
     if (!user) {
       return res.send("Account with the given phone number does  not exist");
     }
