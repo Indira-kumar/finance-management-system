@@ -9,7 +9,6 @@ const User = mongoose.model(
     },
     email: {
       type: String,
-      required: true,
       unique: true,
     },
     password: {
@@ -23,7 +22,7 @@ const User = mongoose.model(
     },
     role: {
       type: String,
-      default: "Admin",
+      default: "admin",
     },
   })
 );
