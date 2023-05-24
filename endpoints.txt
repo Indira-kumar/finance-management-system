@@ -1,0 +1,140 @@
+Home:
+GET locahost:6001/line/
+
+1) Loan:
+POST locahost:6001/loan
+all details mentioned in model as comments
+
+GET locahost:6001/loan/date
+line_name
+date
+
+2) Collection:
+POST localhost:6001/dailycollection
+all data in body
+
+GET locahost:6001/loan
+line_name
+loan_closed_date $not: null (taken care in BE)
+
+PUT locahost:6001/loan/updateBalance
+lineName
+loan_no
+value
+
+GET localhost:6001/dailycollection
+line_name
+date
+
+PUT localhost:6001/dailycollection //note for FE dev, call update balance before, then get the updated loan
+line_name
+loan_no
+date
+pay_amount
+excess: updatedLoan.excess
+
+DELETE localhost:6001/dailycollection
+line_name
+loan_no
+
+3) Account Close
+POST http://localhost:6001/accountclose
+line_name
+date
+GET http://localhost:6001/accountclose
+line_name
+limit
+
+4) Report
+To list all the loans in a line
+GET localhost:6001/loan/all
+line_name
+
+Individual Report
+GET localhost:6001/dailycollection/loan
+line_name
+loan_no
+
+Total Ledger (number of days for filter should be taken care in Front End)
+GET locahost:6001/loan
+line_name
+loan_closed_date $not: null (taken care in BE)
+
+Monthly Bill
+GET locahost:6001/totalcollection/daterange
+starting_date
+ending_date
+line_name
+
+Old Date Bill
+GET localhost:6001/dailycollection
+date
+line_name
+
+Monthly Loan
+GET locahost:6001/loan/date
+starting_date 
+ending_date
+line_name
+
+Closed Parties
+GET locahost:6001/loan/closed
+line_name
+
+Not paid 
+GET localhost:6001/dailycollection/condition
+date
+line_name
+amount_paid == 0
+
+NIP (create end point)
+GET locahost:6001/loan
+line_name
+const diff = new Date("2023-05-11") - new Date("2023-04-09")
+send if diff > given num_of_days
+
+Excess
+GET locahost:6001/loan/closed
+line_name
+excess:$not:{$eq:0}
+
+10 week
+create date range endpoint for daily collection 
+create an end point to merge the above with loan
+
+Bulk Paid
+GET locahost:6001/loan/closed
+line_name
+is_bulk_paid:{$eq:true}
+
+Continously not paid
+
+Order no.
+
+
+Notes:
+update date params(everywhere date should be "2023-03-02" format, no time, nothing)
+tell that, for searching,editing u have to use phone_number as a parameter
+Write controller logic to change the getLoansByDate to date range
+write loan close logic in updateBalance
+Write logic for updating total collection table
+Write controller logic for getTotalCollectionsByDateRange
+Write acc close table endpoints
+write end point/logic to fetch the latest loan_number for this line
+write end point/logic to fetch the latest user_number for this line
+add excess in daily collection (logic in FE, written above)
+head table created
+
+Write logic for updating the different fields in thittam
+write end points to fetch thittam fields with date range
+weekly history - array manipulation
+Particular element should be removed once data is entered in daily collection
+
+
+
+
+
+Remaining:
+1) Reports (2 reports)
+2) extra endpoints
+3) complete thittam
